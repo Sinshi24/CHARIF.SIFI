@@ -1,12 +1,12 @@
 :root {
   --glow: #00ff00;
   --bg: #000000;
-  --bg-translucent: rgba(0, 0, 0, 0.5); /* Replaces #0008 */
+  --bg-translucent: rgba(0, 0, 0, 0.5);
   --fg: #00ff00;
   --dim: #004400;
   --accent: #cc00ff;
   --purple-glow: rgba(204, 0, 255, 0.7);
-  --subheader-blue: #93c5fd; /* Ported your soft blue to a variable */
+  --subheader-blue: #93c5fd;
 }
 
 /* ==========================================================================
@@ -28,7 +28,7 @@ body {
   flex-direction: column;
 }
 
-/* Background Effects */
+/* Background Matrix & CRT Effects */
 canvas#matrix {
   position: fixed;
   inset: 0;
@@ -54,11 +54,14 @@ canvas#matrix {
 }
 
 /* ==========================================================================
-   Typography & Sections
+   Typography & Layout Structural Components
    ========================================================================== */
+h1, h2, h4 {
+  font-weight: 400;
+}
+
 h1, h2 {
   color: var(--fg);
-  font-weight: 400;
   text-shadow: 0 0 6px var(--glow);
 }
 
@@ -83,29 +86,8 @@ section {
   padding: 60px 20px 80px;
 }
 
-.projects-section {
-  background: transparent;
-}
-
-.section-heading {
-  color: var(--subheader-blue);
-}
-
-.heading-ventures {
-  margin-top: 40px;
-}
-
-.heading-labs {
-  margin-top: 50px;
-}
-
-.section-subtext {
-  color: #888;
-  font-size: 0.9rem;
-  text-align: left;
-  margin-bottom: 20px;
-  width: 100%;
-  max-width: 960px;
+.action-buttons {
+  margin-top: 20px;
 }
 
 /* ==========================================================================
@@ -117,7 +99,7 @@ nav {
   left: 0;
   right: 0;
   height: 40px;
-  background: rgba(0, 12, 0, 0.8); /* Matrix-tinted translucent black */
+  background: rgba(0, 12, 0, 0.8);
   border-top: 1px solid var(--dim);
   display: flex;
   align-items: center;
@@ -161,7 +143,7 @@ nav a.active::after {
 }
 
 /* ==========================================================================
-   Terminal UI & Components
+   Terminal Main Module Framework
    ========================================================================== */
 .term {
   background: var(--bg-translucent);
@@ -192,6 +174,11 @@ nav a.active::after {
 .term pre {
   white-space: pre-wrap;
   word-break: break-all;
+  font-family: inherit;
+}
+
+.status-ok {
+  color: var(--fg);
 }
 
 #input-line {
@@ -213,8 +200,20 @@ nav a.active::after {
   caret-color: var(--glow);
 }
 
+.term-skills-adjust {
+  max-width: 560px;
+}
+
+.term-contact-adjust {
+  text-align: center;
+}
+
+.contact-buttons {
+  margin-top: 12px;
+}
+
 /* ==========================================================================
-   Skill Bars
+   Skill Metrics Components
    ========================================================================== */
 .skill {
   margin: 10px 0;
@@ -248,7 +247,38 @@ nav a.active::after {
 }
 
 /* ==========================================================================
-   Grid System & Cards
+   Projects Context Layout & Subcategory Headers
+   ========================================================================== */
+.projects-section {
+  background: transparent;
+}
+
+.section-heading {
+  color: var(--subheader-blue);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.heading-ventures {
+  margin-top: 40px;
+}
+
+.heading-labs {
+  margin-top: 50px;
+}
+
+.section-subtext {
+  color: #888;
+  font-size: 0.9rem;
+  text-align: left;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 960px;
+}
+
+/* ==========================================================================
+   Grid Infrastructure & Complex Components
    ========================================================================== */
 .grid-cards {
   display: grid;
@@ -287,7 +317,7 @@ nav a.active::after {
   transform: translateY(0);
 }
 
-/* Card Elements */
+/* Interactive Card Elements */
 .card-header {
   display: flex;
   align-items: center;
@@ -300,7 +330,10 @@ nav a.active::after {
   height: 24px !important;
   max-width: 24px !important;
   max-height: 24px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
   object-fit: contain;
+  flex-shrink: 0;
   display: inline-block;
 }
 
@@ -313,15 +346,16 @@ nav a.active::after {
 }
 
 .card-description {
-  color: var(--fg); 
+  color: var(--fg);
+  margin-bottom: 12px;
 }
 
-/* Tags Inside Cards */
+/* Embedded Micro Elements (Tags) */
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin: 8px 0;
+  margin: 8px 0 14px;
 }
 
 .tag {
@@ -338,7 +372,7 @@ nav a.active::after {
   background: #220033;
 }
 
-/* Buttons */
+/* Anchor Control Actions */
 .btn {
   display: inline-block;
   background: transparent;
@@ -360,7 +394,7 @@ nav a.active::after {
 }
 
 /* ==========================================================================
-   Animations & Glitch Utility Effects
+   Animation Timelines & Processing Blocks
    ========================================================================== */
 .blink {
   animation: blink 1s step-end infinite;
@@ -387,7 +421,7 @@ nav a.active::after {
   font-size: 1.2rem;
 }
 
-/* Cyberpunk Glitch Effect */
+/* Glitch Processing Engine */
 .glitch {
   position: relative;
   display: inline-block;
@@ -458,7 +492,7 @@ nav a.active::after {
 }
 
 /* ==========================================================================
-   Footer & Global Element Overrides
+   Global Window Framework Overrides & Footer
    ========================================================================== */
 footer {
   text-align: center;
@@ -481,7 +515,7 @@ footer {
 }
 
 /* ==========================================================================
-   Media Queries
+   Media Breakpoints (Responsive UI Logic)
    ========================================================================== */
 @media (max-width: 768px) {
   h1 { font-size: 1.8rem; }
@@ -495,13 +529,13 @@ footer {
   }
   
   nav a {
-    padding: 6px 12px; /* Gives links a larger tap target on phones */
+    padding: 6px 12px;
     width: 100%;
     text-align: center;
   }
   
   nav a.active::after {
-    display: none; /* Hides the dot indicator on mobile layouts since it misaligns */
+    display: none;
   }
   
   nav div {
