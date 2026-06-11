@@ -296,9 +296,12 @@ nav a.active::after {
 }
 
 .card-icon {
-  width: 24px;
-  height: 24px;
-  object-fit: contain; /* Prevents logos from stretching out of proportion */
+  width: 24px !important;
+  height: 24px !important;
+  max-width: 24px !important;
+  max-height: 24px !important;
+  object-fit: contain;
+  display: inline-block;
 }
 
 .card-title {
