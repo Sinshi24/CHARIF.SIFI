@@ -1,10 +1,12 @@
 :root {
   --glow: #00ff00;
-  --bg: #000;
+  --bg: #000000;
+  --bg-translucent: rgba(0, 0, 0, 0.5); /* Replaces #0008 */
   --fg: #00ff00;
   --dim: #004400;
   --accent: #cc00ff;
-  --purple-glow: rgba(204, 0, 255, .7);
+  --purple-glow: rgba(204, 0, 255, 0.7);
+  --subheader-blue: #93c5fd; /* Ported your soft blue to a variable */
 }
 
 /* ==========================================================================
@@ -33,7 +35,7 @@ canvas#matrix {
   width: 100%;
   height: 100%;
   z-index: 0;
-  opacity: .12;
+  opacity: 0.12;
   pointer-events: none;
 }
 
@@ -42,7 +44,7 @@ canvas#matrix {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(0, rgba(0, 0, 0, 0) 50%, rgba(0, 255, 0, .03) 50%);
+  background: linear-gradient(0, rgba(0, 0, 0, 0) 50%, rgba(0, 255, 0, 0.03) 50%);
   background-size: 100% 4px;
   animation: scan 2s linear infinite;
 }
@@ -86,7 +88,7 @@ section {
 }
 
 .section-heading {
-  color: #93c5fd; /* Soft blue for section sub-headers */
+  color: var(--subheader-blue);
 }
 
 .heading-ventures {
@@ -103,7 +105,7 @@ section {
   text-align: left;
   margin-bottom: 20px;
   width: 100%;
-  max-width: 960px; /* Aligns cleanly with the card layout boundaries */
+  max-width: 960px;
 }
 
 /* ==========================================================================
@@ -115,7 +117,7 @@ nav {
   left: 0;
   right: 0;
   height: 40px;
-  background: #000c;
+  background: rgba(0, 12, 0, 0.8); /* Matrix-tinted translucent black */
   border-top: 1px solid var(--dim);
   display: flex;
   align-items: center;
@@ -130,7 +132,7 @@ nav a {
   text-decoration: none;
   padding: 4px 8px;
   border: 1px solid transparent;
-  transition: .2s;
+  transition: 0.2s;
   position: relative;
 }
 
@@ -162,7 +164,7 @@ nav a.active::after {
    Terminal UI & Components
    ========================================================================== */
 .term {
-  background: #0008;
+  background: var(--bg-translucent);
   border: 1px solid var(--dim);
   padding: 12px;
   width: 100%;
@@ -175,9 +177,7 @@ nav a.active::after {
 .term::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   height: 2px;
   background: var(--glow);
   box-shadow: 0 0 8px var(--glow);
@@ -232,7 +232,7 @@ nav a.active::after {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(0, 255, 0, .2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent);
   animation: shine 3s infinite;
 }
 
@@ -259,11 +259,11 @@ nav a.active::after {
 }
 
 .card {
-  background: #0008;
+  background: var(--bg-translucent);
   border: 1px solid var(--dim);
   padding: 16px;
   border-radius: 4px;
-  transition: .3s;
+  transition: 0.3s;
   position: relative;
   overflow: hidden;
 }
@@ -272,15 +272,15 @@ nav a.active::after {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(0, 255, 0, .05), transparent);
+  background: linear-gradient(45deg, transparent, rgba(0, 255, 0, 0.05), transparent);
   transform: translateY(100%);
-  transition: transform .5s ease;
+  transition: transform 0.5s ease;
 }
 
 .card:hover {
   border-color: var(--accent);
   transform: translateY(-2px);
-  box-shadow: 0 0 12px rgba(204, 0, 255, .3);
+  box-shadow: 0 0 12px rgba(204, 0, 255, 0.3);
 }
 
 .card:hover::before {
@@ -298,6 +298,7 @@ nav a.active::after {
 .card-icon {
   width: 24px;
   height: 24px;
+  object-fit: contain; /* Prevents logos from stretching out of proportion */
 }
 
 .card-title {
@@ -309,7 +310,7 @@ nav a.active::after {
 }
 
 .card-description {
-  color: var(--fg); /* Pulls system green directly from your variables */
+  color: var(--fg); 
 }
 
 /* Tags Inside Cards */
@@ -324,9 +325,9 @@ nav a.active::after {
   background: #002200;
   border: 1px solid var(--dim);
   padding: 2px 6px;
-  font-size: .75rem;
+  font-size: 0.75rem;
   border-radius: 2px;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .card:hover .tag {
@@ -344,14 +345,14 @@ nav a.active::after {
   margin: 4px;
   border-radius: 2px;
   text-decoration: none;
-  transition: all .3s;
+  transition: all 0.3s;
   text-shadow: 0 0 4px var(--purple-glow);
-  box-shadow: 0 0 6px rgba(204, 0, 255, .3);
+  box-shadow: 0 0 6px rgba(204, 0, 255, 0.3);
 }
 
 .btn:hover {
-  background: rgba(204, 0, 255, .1);
-  box-shadow: 0 0 10px rgba(204, 0, 255, .5);
+  background: rgba(204, 0, 255, 0.1);
+  box-shadow: 0 0 10px rgba(204, 0, 255, 0.5);
   transform: translateY(-2px);
 }
 
@@ -372,7 +373,7 @@ nav a.active::after {
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: .7; }
+  0%, 100% { opacity: 0.7; }
   50% { opacity: 1; }
 }
 
@@ -414,9 +415,9 @@ nav a.active::after {
 @keyframes glitch-flicker {
   0%, 100% { opacity: 1; }
   92% { opacity: 1; }
-  93% { opacity: .4; }
+  93% { opacity: 0.4; }
   94% { opacity: 1; }
-  96% { opacity: .2; }
+  96% { opacity: 0.2; }
   97% { opacity: 1; }
 }
 
@@ -460,7 +461,7 @@ footer {
   text-align: center;
   padding: 20px;
   color: var(--dim);
-  font-size: .75rem;
+  font-size: 0.75rem;
 }
 
 ::-webkit-scrollbar {
@@ -468,7 +469,7 @@ footer {
 }
 
 ::-webkit-scrollbar-track {
-  background: #000;
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -486,11 +487,22 @@ footer {
   nav {
     flex-direction: column;
     height: auto;
-    padding: 8px;
+    padding: 12px 8px;
+    gap: 8px;
+  }
+  
+  nav a {
+    padding: 6px 12px; /* Gives links a larger tap target on phones */
+    width: 100%;
+    text-align: center;
+  }
+  
+  nav a.active::after {
+    display: none; /* Hides the dot indicator on mobile layouts since it misaligns */
   }
   
   nav div {
-    margin-top: 8px;
+    margin-top: 0;
   }
   
   section {
